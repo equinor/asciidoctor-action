@@ -511,11 +511,33 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="paragraph">
 <p>Below, is a simplified diagram of the general architecture.</p>
 </div>
-<div class="imageblock kroki">
+<div class="listingblock">
+<div class="title">A simple overview of owrms' architecture</div>
 <div class="content">
-<img src="https://kroki.io/mermaid/svg/eNpLL0osyFAIceFSAIJQz-jw1CQgFaugq2un4BjgGZ1YkKmXWliamZdfpJecnxsLVgeUACtwjQjwDwpxDYp2rSjILypJLYJIw4QVdPUgpnCh6PL0heryzEXWBRNG6AIAVpoqGg==" alt="Diagram">
+<pre>Failed to generate image: mmdc failed: /root/node_modules/puppeteer/lib/Launcher.js:348
+      reject(new Error([
+             ^
+
+Error: Failed to launch chrome! spawn /root/node_modules/puppeteer/.local-chromium/linux-686378/chrome-linux/chrome ENOENT
+
+
+TROUBLESHOOTING: https://github.com/GoogleChrome/puppeteer/blob/master/docs/troubleshooting.md
+
+    at onClose (/root/node_modules/puppeteer/lib/Launcher.js:348:14)
+    at ChildProcess.&lt;anonymous&gt; (/root/node_modules/puppeteer/lib/Launcher.js:339:64)
+    at ChildProcess.emit (events.js:315:20)
+    at Process.ChildProcess._handle.onexit (internal/child_process.js:275:12)
+    at onErrorNT (internal/child_process.js:465:16)
+    at processTicksAndRejections (internal/process/task_queues.js:80:21)
+
+graph TD
+    UI[Web UI] --&gt; API[api.equinor.com]
+    API --&gt; EXPORTER[Exporter]
+    EXPORTER -.-&gt; API
+
+    API --&gt; IMPORTER[Importer]
+    IMPORTER -.-&gt; API</pre>
 </div>
-<div class="title">Figure 1. A simple overview of owrms' architecture</div>
 </div>
 </div>
 <div class="sect2">
@@ -523,11 +545,37 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="paragraph">
 <p>Taking a closer look at api.equinor.com, we see that it includes several components.</p>
 </div>
-<div class="imageblock kroki">
+<div class="listingblock">
+<div class="title">An expanded view of api.equinor.com, with the API gateway, and (temporary) storage area</div>
 <div class="content">
-<img src="https://kroki.io/mermaid/svg/eNpVjdsKgzAMQN_9ivyAwm6vA2Fl9GEormOD4kPdQvXBy6qyCf34ZVV3CYSE5JxEG9XkIHYeUJy4PGNGJQXf39qFhTDmkhK06vChhtRhbZ9pp6mmCPDeF1VtgmtduuU7yPj0RxEl4Z5JgWVTG2UGaDuqGkEZVONBrG7e5LnHSwvsEkeJYIlkT9I6NCM5j8EPiFvZ-bz3568t8MPk8_LXn_BR33yxF9mASlw=" alt="Diagram">
+<pre>Failed to generate image: mmdc failed: /root/node_modules/puppeteer/lib/Launcher.js:348
+      reject(new Error([
+             ^
+
+Error: Failed to launch chrome! spawn /root/node_modules/puppeteer/.local-chromium/linux-686378/chrome-linux/chrome ENOENT
+
+
+TROUBLESHOOTING: https://github.com/GoogleChrome/puppeteer/blob/master/docs/troubleshooting.md
+
+    at onClose (/root/node_modules/puppeteer/lib/Launcher.js:348:14)
+    at ChildProcess.&lt;anonymous&gt; (/root/node_modules/puppeteer/lib/Launcher.js:339:64)
+    at ChildProcess.emit (events.js:315:20)
+    at Process.ChildProcess._handle.onexit (internal/child_process.js:275:12)
+    at onErrorNT (internal/child_process.js:465:16)
+    at processTicksAndRejections (internal/process/task_queues.js:80:21)
+
+graph TD
+    UI[Web UI] --&gt;|1| API[API gateway]
+    subgraph api.equinor.com
+        API
+        STORAGE[Temporary storage area]
+    end
+    API --&gt;|2| EXPORTER[Exporter]
+    EXPORTER -.-&gt;|3| STORAGE
+
+    API --&gt;|4| IMPORTER[Importer]
+    STORAGE -.-&gt;|5| IMPORTER</pre>
 </div>
-<div class="title">Figure 2. An expanded view of api.equinor.com, with the API gateway, and (temporary) storage area</div>
 </div>
 <div class="paragraph">
 <p>The user specifies what should be exported, and to where (1), while the API gateway (api.equinor.com) acts as an intermediary.
@@ -542,7 +590,7 @@ The relevant application is then downloads, and import the relevant RESQML file(
 <div id="footer">
 <div id="footer-text">
 Version 3.0<br>
-Last updated 2021-02-11 14:47:33 UTC
+Last updated 2021-02-11 15:02:45 UTC
 </div>
 </div>
 </body>
