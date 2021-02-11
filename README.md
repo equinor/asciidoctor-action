@@ -31,3 +31,11 @@ jobs:
         publish_branch: gh-pages
         publish_dir: ./
 ```
+
+Run locally:
+
+```
+docker run -it mdc /bin/bash
+docker run -it --security-opt seccomp=chrome.json  mdc /bin/bash
+asciidoctor -r asciidoctor-diagram  -D docs --backend=html5 -o index.html docs/index.adoc
+```
