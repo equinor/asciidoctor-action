@@ -6,3 +6,59 @@ Firstname Lastname <author@asciidoctor.org>
 :url-quickref: https://docs.asciidoctor.org/asciidoc/latest/syntax-quick-reference/
 
 Content entered directly below the header but before the first section heading is called the preamble.
+
+= Workflow for exporting horizons from OpenWorks to RMS
+
+== Component description
+
+There are four main components to the owrms project;
+
+1. The Web user interface
+2. An importer for RESQML file(s)
+3. An exporter for RESQML file(s)
+4. A collection of APIs to facilitate communication between the other components
+- This includes a (temporary) storage area
+
+More specifically, both RMS, and OpenWorks / Decision Space Integration Service (DSIS), both have 2., and 3., as RESQML files may be passed between the two.
+
+=== A simple description
+
+Below, is a simplified diagram of the general architecture.
+
+.A simple overview of owrms' architecture
+[mermaid]
+----
+graph TD
+    UI[Web UI] --> API[api.equinor.com]
+    API --> EXPORTER[Exporter]
+    EXPORTER -.-> API
+
+    API --> IMPORTER[Importer]
+    IMPORTER -.-> API
+
+----
+
+=== A deeper look into api.equinor.com
+
+Taking a closer look at api.equinor.com, we see that it includes several components.
+
+.An expanded view of api.equinor.com, with the API gateway, and (temporary) storage area
+[mermaid]
+----
+graph TD
+    UI[Web UI] -->|1| API[API gateway]
+    subgraph api.equinor.com
+        API
+        STORAGE[Temporary storage area]
+    end
+    API -->|2| EXPORTER[Exporter]
+    EXPORTER -.->|3| STORAGE
+
+    API -->|4| IMPORTER[Importer]
+    STORAGE -.->|5| IMPORTER
+----
+
+The user specifies what should be exported, and to where (1), while the API gateway (api.equinor.com) acts as an intermediary.
+It forwards the request of which horizons, or surfaces are to be exported to DSIS, or RMS respectively (2).
+After the file(s) are created, and uploaded to the (temporary) storage area (3), the API gateway then asks RMS, or DSIS to import the file(s) (4).
+The relevant application is then downloads, and import the relevant RESQML file(s) (5).

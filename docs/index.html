@@ -449,16 +449,100 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <span id="revnumber">version 3.0,</span>
 <span id="revdate">July 29, 2022, AsciiDoc article template</span>
 </div>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel0">
+<li><a href="#_workflow_for_exporting_horizons_from_openworks_to_rms">Workflow for exporting horizons from OpenWorks to RMS</a>
+<ul class="sectlevel1">
+<li><a href="#_component_description">Component description</a>
+<ul class="sectlevel2">
+<li><a href="#_a_simple_description">A simple description</a></li>
+<li><a href="#_a_deeper_look_into_api_equinor_com">A deeper look into api.equinor.com</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div id="content">
+<div id="preamble">
+<div class="sectionbody">
 <div class="paragraph">
 <p>Content entered directly below the header but before the first section heading is called the preamble.</p>
+</div>
+</div>
+</div>
+<h1 id="_workflow_for_exporting_horizons_from_openworks_to_rms" class="sect0">Workflow for exporting horizons from OpenWorks to RMS</h1>
+<div class="sect1">
+<h2 id="_component_description">Component description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are four main components to the owrms project;</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The Web user interface</p>
+</li>
+<li>
+<p>An importer for RESQML file(s)</p>
+</li>
+<li>
+<p>An exporter for RESQML file(s)</p>
+</li>
+<li>
+<p>A collection of APIs to facilitate communication between the other components</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This includes a (temporary) storage area</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>More specifically, both RMS, and OpenWorks / Decision Space Integration Service (DSIS), both have 2., and 3., as RESQML files may be passed between the two.</p>
+</div>
+<div class="sect2">
+<h3 id="_a_simple_description">A simple description</h3>
+<div class="paragraph">
+<p>Below, is a simplified diagram of the general architecture.</p>
+</div>
+<div class="imageblock kroki">
+<div class="content">
+<img src="https://kroki.io/mermaid/svg/eNpLL0osyFAIceFSAIJQz-jw1CQgFaugq2un4BjgGZ1YkKmXWliamZdfpJecnxsLVgeUACtwjQjwDwpxDYp2rSjILypJLYJIw4QVdPUgpnCh6PL0heryzEXWBRNG6AIAVpoqGg==" alt="Diagram">
+</div>
+<div class="title">Figure 1. A simple overview of owrms' architecture</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_a_deeper_look_into_api_equinor_com">A deeper look into api.equinor.com</h3>
+<div class="paragraph">
+<p>Taking a closer look at api.equinor.com, we see that it includes several components.</p>
+</div>
+<div class="imageblock kroki">
+<div class="content">
+<img src="https://kroki.io/mermaid/svg/eNpVjdsKgzAMQN_9ivyAwm6vA2Fl9GEormOD4kPdQvXBy6qyCf34ZVV3CYSE5JxEG9XkIHYeUJy4PGNGJQXf39qFhTDmkhK06vChhtRhbZ9pp6mmCPDeF1VtgmtduuU7yPj0RxEl4Z5JgWVTG2UGaDuqGkEZVONBrG7e5LnHSwvsEkeJYIlkT9I6NCM5j8EPiFvZ-bz3568t8MPk8_LXn_BR33yxF9mASlw=" alt="Diagram">
+</div>
+<div class="title">Figure 2. An expanded view of api.equinor.com, with the API gateway, and (temporary) storage area</div>
+</div>
+<div class="paragraph">
+<p>The user specifies what should be exported, and to where (1), while the API gateway (api.equinor.com) acts as an intermediary.
+It forwards the request of which horizons, or surfaces are to be exported to DSIS, or RMS respectively (2).
+After the file(s) are created, and uploaded to the (temporary) storage area (3), the API gateway then asks RMS, or DSIS to import the file(s) (4).
+The relevant application is then downloads, and import the relevant RESQML file(s) (5).</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
 Version 3.0<br>
-Last updated 2021-02-11 14:07:29 UTC
+Last updated 2021-02-11 14:47:33 UTC
 </div>
 </div>
 </body>
