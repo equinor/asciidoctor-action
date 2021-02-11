@@ -1,0 +1,45 @@
+= AsciiDoc Article Title
+Firstname Lastname <author@asciidoctor.org>
+3.0, July 29, 2022, AsciiDoc article template
+:toc:
+:icons: font
+:url-quickref: https://docs.asciidoctor.org/asciidoc/latest/syntax-quick-reference/
+
+Content entered directly below the header but before the first section heading is called the preamble.
+
+xref:file.adoc[Another page]
+
+== A simple mermaid example
+
+Below, is a simplified diagram of the general architecture.
+
+.A simple overview of an architecture
+[mermaid]
+----
+graph TD
+    UI[Web UI] --> API[api.something.com]
+    API --> EXPORTER[Exporter]
+    EXPORTER -.-> API
+
+    API --> IMPORTER[Importer]
+    IMPORTER -.-> API
+
+----
+
+== A simple plantuml example
+
+[plantuml, , svg]
+....
+@startuml
+
+!include https://raw.githubusercontent.com/adrianvlupu/C4-PlantUML/latest/C4_Context.puml
+
+LAYOUT_WITH_LEGEND()
+
+Person(person, "Person", "A user that...")
+System(system, "Total System", "A system for ...")
+
+Rel(person, system, "Do something")
+
+@enduml
+....

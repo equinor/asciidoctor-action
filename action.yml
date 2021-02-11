@@ -1,0 +1,20 @@
+name: 'Asciidoctor Github Action'
+author: 'Eirik Ola Aksnes'
+description: 'Use asciidoctor in Github actions'
+
+branding:
+  icon: 'file'
+  color: 'green'
+inputs:
+    program:
+        description: 'asciidoctor'
+        required: false
+        default: 'RUN'
+runs:
+    using: 'docker'
+    image: 'Dockerfile'
+    args:
+        - ${{ inputs.program }}
+outputs:
+    time:
+        description: 'Action Completed'
