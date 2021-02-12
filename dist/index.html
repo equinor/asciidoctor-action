@@ -511,36 +511,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="paragraph">
 <p>Below, is a simplified diagram of the general architecture.</p>
 </div>
-<div class="listingblock">
-<div class="title">A simple overview of owrms' architecture</div>
+<div class="imageblock">
 <div class="content">
-<pre>Failed to generate image: mmdc failed: /usr/local/share/.config/yarn/global/node_modules/puppeteer/lib/cjs/puppeteer/node/BrowserRunner.js:193
-            reject(new Error([
-                   ^
-
-Error: Failed to launch the browser process!
-[0211/211922.086902:ERROR:zygote_host_impl_linux.cc(90)] Running as root without --no-sandbox is not supported. See https://crbug.com/638180.
-
-
-TROUBLESHOOTING: https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md
-
-    at onClose (/usr/local/share/.config/yarn/global/node_modules/puppeteer/lib/cjs/puppeteer/node/BrowserRunner.js:193:20)
-    at Interface.&lt;anonymous&gt; (/usr/local/share/.config/yarn/global/node_modules/puppeteer/lib/cjs/puppeteer/node/BrowserRunner.js:183:68)
-    at Interface.emit (events.js:327:22)
-    at Interface.close (readline.js:424:8)
-    at Socket.onend (readline.js:202:10)
-    at Socket.emit (events.js:327:22)
-    at endReadableNT (internal/streams/readable.js:1327:12)
-    at processTicksAndRejections (internal/process/task_queues.js:80:21)
-
-graph TD
-    UI[Web UI] --&gt; API[api.equinor.com]
-    API --&gt; EXPORTER[Exporter]
-    EXPORTER -.-&gt; API
-
-    API --&gt; IMPORTER[Importer]
-    IMPORTER -.-&gt; API</pre>
+<img src="diag-944a414ae9618fe88f360339695d3855.png" alt="Diagram" width="227" height="230">
 </div>
+<div class="title">Figure 1. A simple overview of owrms' architecture</div>
 </div>
 </div>
 <div class="sect2">
@@ -548,40 +523,11 @@ graph TD
 <div class="paragraph">
 <p>Taking a closer look at api.equinor.com, we see that it includes several components.</p>
 </div>
-<div class="listingblock">
-<div class="title">An expanded view of api.equinor.com, with the API gateway, and (temporary) storage area</div>
+<div class="imageblock">
 <div class="content">
-<pre>Failed to generate image: mmdc failed: /usr/local/share/.config/yarn/global/node_modules/puppeteer/lib/cjs/puppeteer/node/BrowserRunner.js:193
-            reject(new Error([
-                   ^
-
-Error: Failed to launch the browser process!
-[0211/211922.365901:ERROR:zygote_host_impl_linux.cc(90)] Running as root without --no-sandbox is not supported. See https://crbug.com/638180.
-
-
-TROUBLESHOOTING: https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md
-
-    at onClose (/usr/local/share/.config/yarn/global/node_modules/puppeteer/lib/cjs/puppeteer/node/BrowserRunner.js:193:20)
-    at Interface.&lt;anonymous&gt; (/usr/local/share/.config/yarn/global/node_modules/puppeteer/lib/cjs/puppeteer/node/BrowserRunner.js:183:68)
-    at Interface.emit (events.js:327:22)
-    at Interface.close (readline.js:424:8)
-    at Socket.onend (readline.js:202:10)
-    at Socket.emit (events.js:327:22)
-    at endReadableNT (internal/streams/readable.js:1327:12)
-    at processTicksAndRejections (internal/process/task_queues.js:80:21)
-
-graph TD
-    UI[Web UI] --&gt;|1| API[API gateway]
-    subgraph api.equinor.com
-        API
-        STORAGE[Temporary storage area]
-    end
-    API --&gt;|2| EXPORTER[Exporter]
-    EXPORTER -.-&gt;|3| STORAGE
-
-    API --&gt;|4| IMPORTER[Importer]
-    STORAGE -.-&gt;|5| IMPORTER</pre>
+<img src="diag-756ab0d499451afbf9e9ec50708f844c.png" alt="Diagram" width="457" height="528">
 </div>
+<div class="title">Figure 2. An expanded view of api.equinor.com, with the API gateway, and (temporary) storage area</div>
 </div>
 <div class="paragraph">
 <p>The user specifies what should be exported, and to where (1), while the API gateway (api.equinor.com) acts as an intermediary.
@@ -596,7 +542,7 @@ The relevant application is then downloads, and import the relevant RESQML file(
 <div id="footer">
 <div id="footer-text">
 Version 3.0<br>
-Last updated 2021-02-11 21:17:57 UTC
+Last updated 2021-02-12 07:34:28 UTC
 </div>
 </div>
 </body>

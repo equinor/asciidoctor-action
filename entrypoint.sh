@@ -1,7 +1,5 @@
 #!/bin/bash
-# entrypoint.sh
-set -e
 
-export PATH="${PATH}:/root/bin/"
+set -e
 
 bash -c "$@"

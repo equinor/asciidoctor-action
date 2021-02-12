@@ -25,23 +25,47 @@ ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
     PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
 
 # Add user so we don't need --no-sandbox.
-#RUN addgroup -S pptruser && adduser -S -g pptruser pptruser \
+ARG USER_HOME=/home/pptruser/
+ENV USER=pptruser
+ENV UID=101
+ENV GID=101
+
+RUN addgroup \
+    -g "$GID" \
+    -S "$USER"
+
+RUN adduser \
+    --disabled-password \
+    --gecos "" \
+    --home "$USER_HOME" \
+    --ingroup "$USER" \
+    --no-create-home \
+    --uid "$UID" \
+    "$USER"
+
+RUN mkdir -p /home/pptruser/Downloads /app \
+    && chown -R pptruser:pptruser /home/pptruser \
+    && chown -R pptruser:pptruser /app
+
+
+#RUN addgroup -g 101 -S pptruser && adduser -S -g pptruser pptruser \
 #    && mkdir -p /home/pptruser/Downloads /app \
 #    && chown -R pptruser:pptruser /home/pptruser \
 #    && chown -R pptruser:pptruser /app
 
-COPY ./ /root/
+COPY --chown=pptruser  ./ /home/pptruser/ 
 
-# RUN wget https://raw.githubusercontent.com/jfrazelle/dotfiles/master/etc/docker/seccomp/chrome.json
+#RUN mkdir -p /dist
+#RUN chmod 777 /dist
 
 # Run everything after as non-privileged user.
-# USER pptruser
+USER pptruser
 
 RUN yarn global add @mermaid-js/mermaid-cli
 
-# ENV PATH="${PATH}:/root/.yarn/bin/"
+ENV PATH="${PATH}:/home/pptruser/.yarn/bin/"
 
-WORKDIR /root
+WORKDIR /home/pptruser
 
 ADD puppeteer-config.json  /puppeteer-config.json
 
