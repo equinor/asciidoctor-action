@@ -13,7 +13,7 @@ if [ "${1:-}" = 'RUN' ]; then
       [ -e "$file" ] || continue
       echo "$PWD/$file"
 
-      asciidoctor -r asciidoctor-diagram -D . --backend=html5 -o "../dist/${file%$postfix}".html "${file}"
+      asciidoctor --failure-level ERROR -r asciidoctor-diagram -D . --backend=html5 -o "../dist/${file%$postfix}".html "${file}"
     done
   )
 
