@@ -1,5 +1,7 @@
-#/bin/bash
+#!/bin/bash
 
 echo "$@"
 
-/home/pptruser/.yarn/bin/mmdc -p /home/pptruser/puppeteer-config.json "$@"
+readonly home=/home/pptruser
+
+$home/.yarn/bin/mmdc -c $home/mermaid.config.json -p $home/puppeteer-config.json "$@"
