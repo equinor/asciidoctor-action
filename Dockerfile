@@ -56,10 +56,6 @@ ENV PATH="${PATH}:$USER_HOME/bin/"
 
 WORKDIR $USER_HOME
 
-ADD puppeteer-config.json  /puppeteer-config.json
-
-COPY entrypoint.sh /entrypoint.sh
-
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/home/pptruser/entrypoint.sh"]
 
 CMD ["RUN"]
