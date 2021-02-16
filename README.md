@@ -1,4 +1,4 @@
-# Asciidoctor GitHub Action 
+# Asciidoctor GitHub Action
 
 To use this action add the below config to  **.github/workflows/docs-build.yml**
 
@@ -23,7 +23,7 @@ jobs:
     - name: Build docs
       id: adocbuild
       uses: equinor/asciidoctor-action@main    
-    - name: Deploy docs to githu pages
+    - name: Deploy docs to GitHub pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -31,7 +31,7 @@ jobs:
         publish_dir: ./dist
 ```
 
-## Testing 
+## Testing
 
 You may run this locally by using `run-locally.sh`.
 
