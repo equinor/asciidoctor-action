@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-if [ "$1" = 'RUN' ]; then
+if [ "${1:-}" = 'RUN' ]; then
   convert_to_html () {
       readonly FILE=$(basename "${1}")
       readonly FILENAME="${FILE%.*}"
