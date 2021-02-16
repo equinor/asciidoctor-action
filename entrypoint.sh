@@ -1,14 +1,22 @@
 #!/bin/bash
 set -euo pipefail
 
+shopt -s globstar
+
 if [ "${1:-}" = 'RUN' ]; then
-  convert_to_html () {
-      readonly FILE=$(basename "${1}")
-      readonly FILENAME="${FILE%.*}"
-      asciidoctor -r asciidoctor-diagram -D docs --backend=html5 -o ../dist/"${FILENAME}".html docs/"${FILENAME}".adoc
-  }
-  export -f convert_to_html
-  find ./docs -type f -name '*.adoc' -exec bash -c 'convert_to_html "$0"' {} \;
+  readonly postfix=".adoc"
+
+  (
+    cd docs
+
+    for file in ./**/*"$postfix"; do
+      [ -e "$file" ] || continue
+      echo "$PWD/$file"
+
+      asciidoctor -r asciidoctor-diagram -D . --backend=html5 -o "../dist/${file%$postfix}".html "${file}"
+    done
+  )
+
 else
   exec "$@"
 fi
