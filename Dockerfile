@@ -16,6 +16,15 @@ RUN apk add --no-cache \
       nodejs \
       yarn
 
+# Install pandoc
+RUN apk --no-cache add \
+        gmp \
+        libffi \
+        lua5.3 \
+        lua5.3-lpeg
+
+COPY --from=pandoc/alpine /usr/local/bin/pandoc /usr/local/bin/
+
 # Tell Puppeteer to skip installing Chrome. We'll be using the installed package.
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
     PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
