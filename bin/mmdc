@@ -2,4 +2,4 @@
 
 echo "$@"
 
-/home/pptruser/.yarn/bin/mmdc -p /puppeteer-config.json "$@"
+/home/pptruser/.yarn/bin/mmdc -p /home/pptruser/puppeteer-config.json "$@"

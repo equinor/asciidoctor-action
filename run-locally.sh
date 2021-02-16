@@ -2,6 +2,6 @@
 
 docker build -t asciidoctor-action .
 
-echo ${PWD}
+echo "${PWD}"
 
-docker run --rm -it -v ${PWD}/dist:/home/pptruser/dist/ asciidoctor-action
+docker run --rm -it -v "${PWD}/dist":/home/pptruser/dist/ asciidoctor-action

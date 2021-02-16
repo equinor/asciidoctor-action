@@ -21,7 +21,7 @@ ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
     PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
 
 # Add user so we don't need --no-sandbox.
-ARG USER_HOME=/home/pptruser/
+ARG USER_HOME=/home/pptruser
 ENV USER=pptruser
 ENV UID=101
 ENV GID=101
@@ -39,8 +39,10 @@ RUN adduser \
     --uid "$UID" \
     "$USER"
 
-RUN mkdir -p /home/pptruser/Downloads /app \
-    && chown -R pptruser:pptruser /home/pptruser \
+RUN mkdir -p \
+        $USER_HOME/Downloads \
+        /app \
+    && chown -R pptruser:pptruser $USER_HOME \
     && chown -R pptruser:pptruser /app
 
 # Run everything after as non-privileged user.
@@ -48,15 +50,12 @@ USER pptruser
 
 RUN yarn global add @mermaid-js/mermaid-cli
 
-COPY --chown=pptruser  ./ /home/pptruser/ 
+COPY --chown=pptruser  ./ $USER_HOME
 
-ENV PATH="${PATH}:/home/pptruser/bin/"
+ENV PATH="${PATH}:$USER_HOME/bin/"
 
-WORKDIR /home/pptruser
-ADD puppeteer-config.json  /puppeteer-config.json
+WORKDIR $USER_HOME
 
-COPY entrypoint.sh /entrypoint.sh
-
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/home/pptruser/entrypoint.sh"]
 
 CMD ["RUN"]
