@@ -31,6 +31,16 @@ jobs:
         publish_dir: ./dist
 ```
 
+## Example
+
+Please see [docs](docs).
+
+## How to write documentation
+
+* [Ascidoc syntax-quick-reference](https://docs.asciidoctor.org/asciidoc/latest/syntax-quick-reference/)
+* [asciidoctor-diagram](https://asciidoctor.org/docs/asciidoctor-diagram/)
+* [mermaid](https://mermaid-js.github.io/mermaid/#/)
+
 ## Testing
 
 You may run this locally by using `run-locally.sh`.
