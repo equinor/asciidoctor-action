@@ -27,6 +27,7 @@ if [ "${1:-}" = 'RUN' ]; then
         pandoc --from gfm --to html --standalone "$file" -o "$destination/${file%.md}.html"
         ;;
       *.png)
+        mkdir -p "$(dirname "$destination/$file")"
         cp "$file" "$destination/$file"
         ;;
       *)
