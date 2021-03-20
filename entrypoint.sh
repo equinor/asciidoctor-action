@@ -10,8 +10,8 @@ if [ "${1:-}" = 'RUN' ]; then
 
     readonly destination="../dist"
 
-    mkdir -p "$(dirname "$destination/.asciidoctor")"
-    cp ".asciidoctor" "$destination/.asciidoctor"
+    mkdir -p "$(dirname "$destination/.asciidoctor/docinfo.html")"
+    cp ".asciidoctor/docinfo.html" "$destination/.asciidoctor/docinfo.html"
 
     for file in ./**/*; do
       [ -e "$file" ] || continue
