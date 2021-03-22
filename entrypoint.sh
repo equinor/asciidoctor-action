@@ -30,6 +30,10 @@ if [ "${1:-}" = 'RUN' ]; then
         mkdir -p "$(dirname "$destination/$file")"
         pandoc --from gfm --to html --standalone "$file" -o "$destination/${file%.md}.html"
         ;;
+      *.png|*.jpeg|*.html|*.css)
+        mkdir -p "$(dirname "$destination/$file")"
+        cp "$file" "$destination/$file"
+        ;;
       *)
         echo "Unsupported file type $file"
         ;;
