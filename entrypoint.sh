@@ -17,6 +17,10 @@ if [ "${1:-}" = 'RUN' ]; then
       [[ -d "$file" ]] && continue
       echo "Processing $PWD/$file"
 
+      if [[ "$file" == "$2" ]]; then
+        mv "$file" "index.${filename##*.}"
+      fi
+
       case $file in
 
       *.adoc)
@@ -32,7 +36,7 @@ if [ "${1:-}" = 'RUN' ]; then
       esac
     done
   )
-
+ 
 else
   exec "$@"
 fi

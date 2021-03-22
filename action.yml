@@ -10,11 +10,16 @@ inputs:
         description: 'asciidoctor'
         required: false
         default: 'RUN'
+    main_entry_point_file:
+        description: 'If main entry point file name is other than index, set it here.'
+        required: false
+        default: 'index'
 runs:
     using: 'docker'
     image: 'Dockerfile'
     args:
         - ${{ inputs.program }}
+        - ${{ inputs.main_file_entry_point }}
 outputs:
     time:
         description: 'Action Completed'
