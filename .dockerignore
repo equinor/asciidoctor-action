@@ -1,0 +1,7 @@
+*
+!bin/mmdc
+!puppeteer-config.json
+!entrypoint.sh
+!mermaid.config.json
+!package.json
+!yarn.lock
