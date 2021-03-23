@@ -17,6 +17,9 @@ if [ "${1:-}" = 'RUN' ]; then
       [[ -d "$file" ]] && continue
       echo "Processing $PWD/$file"
 
+      echo "File name is: $file"
+      echo "2nd parameter is: ${2-}"
+
       if [[ "$file" == "${2-}" ]]; then
         mv "$file" "index.${filename##*.}"
       fi
