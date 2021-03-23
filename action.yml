@@ -13,7 +13,7 @@ inputs:
     main_entry_point_file:
         description: 'If main entry point file name is other than index, set it here.'
         required: false
-        default: 'index'
+        default: 'readme'
 runs:
     using: 'docker'
     image: 'Dockerfile'
