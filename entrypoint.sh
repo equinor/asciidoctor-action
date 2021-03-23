@@ -22,6 +22,7 @@ if [ "${1:-}" = 'RUN' ]; then
 
       if [[ "$file" == "${2-}" ]]; then
         mv "$file" "index.${filename##*.}"
+        echo "Inside if statement with parameter ${2-}"
       fi
 
       case $file in
