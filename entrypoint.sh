@@ -21,7 +21,7 @@ if [ "${1:-}" = 'RUN' ]; then
       echo "2nd parameter is: ${2-}"
       echo "1st parameter is: ${1:-}"
 
-      if [[ -z "${2-}" ]] && [[ "$file" == *"${2-}"* ]]; then
+      if [[ "$file" == *"${2-}"* ]]; then
         mv "$file" "index.${filename##*.}"
         echo "Inside if statement with parameter: ${2-}"
       fi
