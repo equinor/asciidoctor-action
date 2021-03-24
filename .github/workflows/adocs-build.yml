@@ -20,7 +20,7 @@ jobs:
       id: adocbuild
       uses: ./
       with: 
-        main_entry_point_file: README
+        main_entry_point_file: README.adoc
     - name: Deploy docs to github pages
       uses: peaceiris/actions-gh-pages@v3
       with:

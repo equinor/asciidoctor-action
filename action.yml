@@ -11,7 +11,7 @@ inputs:
         required: false
         default: 'RUN'
     main_entry_point_file:
-        description: 'If main entry point file name is other than index, set it here.'
+        description: 'If main entry point file name is other than index, set it here. E.g README'
         required: false
         default: 'index'
 runs:

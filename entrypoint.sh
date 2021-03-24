@@ -17,10 +17,6 @@ if [ "${1:-}" = 'RUN' ]; then
       [[ -d "$file" ]] && continue
       echo "Processing $PWD/$file"
 
-      echo "File name is: $file"
-      echo "2nd parameter is: ${2-}"
-      echo "1st parameter is: ${1:-}"
-
       case $file in
 
       *.adoc)
@@ -41,7 +37,6 @@ if [ "${1:-}" = 'RUN' ]; then
 
       if [[ "$file" == *"${2%.*-}"* ]]; then
         mv "$destination/${file%.*}.html" "$destination/index.html"
-        echo "Inside if statement with parameter: ${2-}"
       fi
 
     done
