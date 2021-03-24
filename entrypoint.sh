@@ -40,7 +40,7 @@ if [ "${1:-}" = 'RUN' ]; then
       esac
 
       if [[ "$file" == *"${2-}"* ]]; then
-        mv "$destination/$file" "$destination/index.${file##*.}"
+        mv "$destination/$file"%.* "$destination/index.${file##*.}"
         echo "Inside if statement with parameter: ${2-}"
       fi
 
