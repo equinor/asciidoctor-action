@@ -39,8 +39,8 @@ if [ "${1:-}" = 'RUN' ]; then
         ;;
       esac
 
-      if [[ "$file" == *"${2-}"* ]]; then
-        mv "$destination/$file%.*" "$destination/index.${file##*.}"
+      if [[ "$file" == *"${2%.*-}"* ]]; then
+        mv "$destination/${file%.*}.html" "$destination/index.html"
         echo "Inside if statement with parameter: ${2-}"
       fi
 
