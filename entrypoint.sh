@@ -18,10 +18,10 @@ if [ "${1:-}" = 'RUN' ]; then
       echo "Processing $PWD/$file"
 
       echo "File name is: $file"
-      echo "2nd parameter is: ${2:-}"
+      echo "2nd parameter is: ${2-}"
       echo "1st parameter is: ${1:-}"
 
-      if [[ "$file" == "${2:-}" ]]; then
+      if [[ -z "${2-}" ]] && [[ "${2-}" == *"$file"* ]]; then
         mv "$file" "index.${filename##*.}"
         echo "Inside if statement with parameter: ${2-}"
       fi
