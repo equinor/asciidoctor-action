@@ -13,13 +13,13 @@ inputs:
     main_entry_point_file:
         description: 'If main entry point file name is other than index, set it here.'
         required: false
-        default: './index.adoc'
+        default: 'index'
 runs:
     using: 'docker'
     image: 'Dockerfile'
     args:
         - ${{ inputs.program }}
-        - ${{ inputs.main_file_entry_point }}
+        - ${{ inputs.main_entry_point_file }}
 outputs:
     time:
         description: 'Action Completed'
