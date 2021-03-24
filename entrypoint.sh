@@ -22,7 +22,7 @@ if [ "${1:-}" = 'RUN' ]; then
       echo "1st parameter is: ${1:-}"
 
       if [[ "$file" == *"${2-}"* ]]; then
-        ls -l 
+        ls -l whoami
         mv "$file" "index.${file##*.}"
         echo "Inside if statement with parameter: ${2-}"
       fi
