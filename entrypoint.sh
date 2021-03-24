@@ -21,12 +21,6 @@ if [ "${1:-}" = 'RUN' ]; then
       echo "2nd parameter is: ${2-}"
       echo "1st parameter is: ${1:-}"
 
-      if [[ "$file" == *"${2-}"* ]]; then
-        ls -l whoami
-        mv "$file" "index.${file##*.}"
-        echo "Inside if statement with parameter: ${2-}"
-      fi
-
       case $file in
 
       *.adoc)
@@ -44,6 +38,12 @@ if [ "${1:-}" = 'RUN' ]; then
         echo "Unsupported file type $file"
         ;;
       esac
+
+      if [[ "$file" == *"${2-}"* ]]; then
+        mv "$file" "index.${file##*.}"
+        echo "Inside if statement with parameter: ${2-}"
+      fi
+
     done
   )
  
