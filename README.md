@@ -34,7 +34,7 @@ jobs:
 
 If main entry point file name is other than index, set it by adding it as input in `Build docs` step.
 
-E.g if main entry point file is README.adoc, switch `Build docs` step to:
+E.g if main entry point file is README.md, switch `Build docs` step to:
 
 ```
     - name: Build docs
