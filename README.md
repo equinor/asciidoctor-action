@@ -30,6 +30,19 @@ jobs:
         publish_branch: gh-pages
         publish_dir: ./dist
 ```
+## Inputs
+
+If main entry point file name is other than index, set it by adding it as input in `Build docs` step.
+
+E.g if main entry point file is README.adoc, switch `Build docs` step to:
+
+```
+    - name: Build docs
+      id: adocbuild
+      uses: equinor/asciidoctor-action@main
+      with:
+        main_entry_point_file: README
+```
 
 ## Example
 
