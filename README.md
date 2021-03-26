@@ -44,6 +44,8 @@ E.g if main entry point file is README.md, switch `Build docs` step to:
         main_entry_point_file: README
 ```
 
+There is no need for a suffix in `main_entry_point_file`.
+
 ## Example
 
 Please see [docs](docs).
