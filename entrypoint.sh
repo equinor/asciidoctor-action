@@ -34,9 +34,14 @@ if [ "${1:-}" = 'RUN' ]; then
         echo "Unsupported file type $file"
         ;;
       esac
+
+      if [[ "$file" == *"${2%.*-}"* ]]; then
+        mv "$destination/${file%.*}.html" "$destination/index.html"
+      fi
+
     done
   )
-
+ 
 else
   exec "$@"
 fi

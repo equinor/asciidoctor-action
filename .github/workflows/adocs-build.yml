@@ -18,7 +18,7 @@ jobs:
     - name: Build docs
       id: adocbuild
       uses: ./
-    - name: Deploy docs to githu pages
+    - name: Deploy docs to github pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
