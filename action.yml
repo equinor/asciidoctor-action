@@ -14,12 +14,17 @@ inputs:
         description: 'If main entry point file name is other than index, set it here. E.g README'
         required: false
         default: 'index'
+    base_folder:
+        description: 'If base folder is other than docs, set it here. E.g ./ for root'
+        required: false
+        default: 'docs'
 runs:
     using: 'docker'
     image: 'Dockerfile'
     args:
         - ${{ inputs.program }}
         - ${{ inputs.main_entry_point_file }}
+        - ${{ inputs.base_folder }}
 outputs:
     time:
         description: 'Action Completed'

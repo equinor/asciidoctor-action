@@ -6,7 +6,9 @@ shopt -s globstar
 if [ "${1:-}" = 'RUN' ]; then
 
   (
-    cd docs
+
+    echo "folder:  ${3-}"
+    cd "${3-}"
 
     readonly destination="../dist"
 
