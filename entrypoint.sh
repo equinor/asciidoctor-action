@@ -9,7 +9,7 @@ if [ "${1:-}" = 'RUN' ]; then
     echo "folder:  ${3-}"
     cd "${3-}"
 
-    readonly destination="/dist"
+    readonly destination="dist"
 
     for file in ./**/*; do
       [ -e "$file" ] || continue
