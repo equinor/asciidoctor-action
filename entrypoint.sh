@@ -3,6 +3,8 @@ set -euo pipefail
 
 shopt -s globstar
 
+pwd
+
 if [ "${1:-}" = 'RUN' ]; then
 
   (
