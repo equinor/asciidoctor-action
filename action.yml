@@ -11,11 +11,11 @@ inputs:
         required: false
         default: 'RUN'
     entry_point:
-        description: 'Specify if entry point name is other than index, set it here. E.g README'
+        description: 'Specify if entry point is other than default. E.g README'
         required: false
         default: 'index'
     docs_folder:
-        description: 'Specify if docs folder is other than docs, set it here. E.g ./ for root'
+        description: 'Specify if docs folder is other than default. E.g ./'
         required: false
         default: 'docs'
 runs:
