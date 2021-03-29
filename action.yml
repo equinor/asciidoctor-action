@@ -10,12 +10,12 @@ inputs:
         description: 'asciidoctor'
         required: false
         default: 'RUN'
-    main_entry_point_file:
-        description: 'If main entry point file name is other than index, set it here. E.g README'
+    entry_point:
+        description: 'Specify if entry point name is other than index, set it here. E.g README'
         required: false
         default: 'index'
-    base_folder:
-        description: 'If base folder is other than docs, set it here. E.g ./ for root'
+    docs_folder:
+        description: 'Specify if docs folder is other than docs, set it here. E.g ./ for root'
         required: false
         default: 'docs'
 runs:
