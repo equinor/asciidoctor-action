@@ -9,7 +9,7 @@ if [ "${1:-}" = 'RUN' ]; then
     echo "folder:  ${3-}"
     cd "${3-}"
 
-    readonly destination="~/dist"
+    readonly destination="/github/workspace/dist"
 
     for file in ./**/*; do
       [ -e "$file" ] || continue
