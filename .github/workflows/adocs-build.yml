@@ -5,7 +5,7 @@ on:
     branches:
     - main
     - master
-    - alternative-base-folder-as-input
+    - alternative-base-folder
 
 jobs:
   deploy-docs:
