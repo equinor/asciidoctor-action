@@ -23,8 +23,8 @@ runs:
     image: 'Dockerfile'
     args:
         - ${{ inputs.program }}
-        - ${{ inputs.main_entry_point_file }}
-        - ${{ inputs.base_folder }}
+        - ${{ inputs.entry_point }}
+        - ${{ inputs.docs_folder }}
 outputs:
     time:
         description: 'Action Completed'
