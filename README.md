@@ -32,19 +32,27 @@ jobs:
 ```
 ## Inputs
 
-If main entry point file name is other than index, set it by adding it as input in `Build docs` step.
+### Entry point
+Specify if entry point is other than default.
 
-E.g if main entry point file is README.md, switch `Build docs` step to:
+E.g if entry point is README.md, add the following to asciidoctor-action:
 
 ```
-    - name: Build docs
-      id: adocbuild
-      uses: equinor/asciidoctor-action@main
       with:
-        main_entry_point_file: README
+        entry_point: README
 ```
 
-There is no need for a suffix in `main_entry_point_file`.
+There is no need for a suffix in entry point.
+
+### Docs folder
+Specify if docs folder is other than default.
+
+E.g if docs folder is ./, add the following to asciidoctor-action step:
+
+```
+      with:
+        docs_folder: ./
+```
 
 ## Example
 

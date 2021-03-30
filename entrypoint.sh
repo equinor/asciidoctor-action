@@ -6,9 +6,9 @@ shopt -s globstar
 if [ "${1:-}" = 'RUN' ]; then
 
   (
-    cd docs
+    cd "${3-}"
 
-    readonly destination="../dist"
+    readonly destination="/github/workspace/dist"
 
     for file in ./**/*; do
       [ -e "$file" ] || continue

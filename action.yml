@@ -10,16 +10,21 @@ inputs:
         description: 'asciidoctor'
         required: false
         default: 'RUN'
-    main_entry_point_file:
-        description: 'If main entry point file name is other than index, set it here. E.g README'
+    entry_point:
+        description: 'Specify if entry point is other than default. E.g README'
         required: false
         default: 'index'
+    docs_folder:
+        description: 'Specify if docs folder is other than default. E.g ./'
+        required: false
+        default: 'docs'
 runs:
     using: 'docker'
     image: 'Dockerfile'
     args:
         - ${{ inputs.program }}
-        - ${{ inputs.main_entry_point_file }}
+        - ${{ inputs.entry_point }}
+        - ${{ inputs.docs_folder }}
 outputs:
     time:
         description: 'Action Completed'
