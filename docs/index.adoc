@@ -43,3 +43,23 @@ Rel(person, system, "Do something")
 
 @enduml
 ....
+
+== A simple project structure example
+
+[plantuml, format=svg]
+----
+skinparam Legend {
+    BackgroundColor transparent
+    BorderColor transparent
+    FontSize 17
+}
+legend
+application
+|_ api/
+   |_ Dockerfile 
+|_ web/   
+   |_ Dockerfile 
+|_ docker-compose.yml
+|_ ...
+end legend
+----
