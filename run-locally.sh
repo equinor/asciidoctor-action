@@ -9,6 +9,6 @@ echo "${PWD}"
 docker run \
     --rm \
     -it \
-    -v "${PWD}/dist":/home/pptruser/dist/ \
+    -v "${PWD}/dist":/github/workspace/dist/ \
     -v "${PWD}/docs":/home/pptruser/docs/ \
     asciidoctor-action
