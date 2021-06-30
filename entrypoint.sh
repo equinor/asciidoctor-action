@@ -35,8 +35,10 @@ if [ "${1:-}" = 'RUN' ]; then
         ;;
       esac
 
-      if [[ "$file" == *"${2%.*-}"* ]]; then
-        mv "$destination/${file%.*}.html" "$destination/index.html"
+      if [[ $# -ge 2 ]]; then
+        if [[ "$file" == *"${2%.*-}"* ]]; then
+          mv "$destination/${file%.*}.html" "$destination/index.html"
+        fi
       fi
 
     done

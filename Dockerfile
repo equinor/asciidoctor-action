@@ -1,6 +1,6 @@
 FROM asciidoctor/docker-asciidoctor
 
-LABEL "version"="1.0"
+LABEL "version"="1.1"
 
 # https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md
 
@@ -49,7 +49,7 @@ RUN adduser \
     "$USER"
 
 RUN mkdir -p \
-        $USER_HOME/Downloads \
+        $USER_HOME \
         /app \
     && chown -R pptruser:pptruser $USER_HOME \
     && chown -R pptruser:pptruser /app
@@ -57,14 +57,20 @@ RUN mkdir -p \
 # Run everything after as non-privileged user.
 USER pptruser
 
-RUN yarn global add @mermaid-js/mermaid-cli
+# Install all dependencies here, so that the home folder
+# can be used directly
+WORKDIR /app
 
-COPY --chown=pptruser  ./ $USER_HOME
+COPY --chown=pptruser  package.json .
+COPY --chown=pptruser  yarn.lock .
+RUN yarn install --frozen-lockfile
 
-ENV PATH="${PATH}:$USER_HOME/bin/"
+COPY --chown=pptruser  ./ .
 
 WORKDIR $USER_HOME
 
-ENTRYPOINT ["/home/pptruser/entrypoint.sh"]
+ENV PATH="${PATH}:/app/bin/"
+
+ENTRYPOINT ["/app/entrypoint.sh"]
 
 CMD ["RUN"]
