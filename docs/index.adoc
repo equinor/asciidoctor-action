@@ -1,9 +1,12 @@
 = AsciiDoc Article Title
 Firstname Lastname <author@asciidoctor.org>
 3.0, July 29, 2022, AsciiDoc article template
+:math:
+:stem:
 :toc:
 :icons: font
 :url-quickref: https://docs.asciidoctor.org/asciidoc/latest/syntax-quick-reference/
+
 
 Content entered directly below the header but before the first section heading is called the preamble.
 
@@ -63,3 +66,7 @@ application
 |_ ...
 end legend
 ----
+
+== Latex example
+
+latexmath:[dz = z_{global} - (z_{min} + z_{incr} * k)]
