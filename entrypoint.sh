@@ -31,7 +31,12 @@ if [ "${1:-}" = 'RUN' ]; then
         cp "$file" "$destination/$file"
         ;;
       *)
-        echo "Unsupported file type $file"
+        if [[ "${4:-false}" == "true" ]]; then
+          mkdir -p "$(dirname "$destination/$file")"
+          cp "$file" "$destination/$file"
+        else
+          echo "Unsupported file type $file"
+        fi
         ;;
       esac
 
