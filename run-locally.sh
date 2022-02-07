@@ -12,4 +12,4 @@ docker run \
     -it \
     -v "${PWD}/dist":/github/workspace/dist/ \
     -v "${PWD}/docs":/home/pptruser/docs/ \
-    asciidoctor-action
+    asciidoctor-action "$@"
