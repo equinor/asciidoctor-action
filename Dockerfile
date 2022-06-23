@@ -1,6 +1,7 @@
-FROM asciidoctor/docker-asciidoctor
+FROM pandoc/alpine:2.16.2 AS pandoc
+FROM asciidoctor/docker-asciidoctor:1.22.2
 
-LABEL "version"="1.1"
+LABEL "version"="1.1.1"
 
 # https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md
 
@@ -23,7 +24,12 @@ RUN apk --no-cache add \
         lua5.3 \
         lua5.3-lpeg
 
-COPY --from=pandoc/alpine /usr/local/bin/pandoc /usr/local/bin/
+# "Install" pandoc
+COPY --from=pandoc /usr/local/bin/pandoc /usr/local/bin/
+## It requires libffi.so.7, but .8 will be installed.
+## Using a symbolic link seem to be enough, though if there are issues, we may need
+## to copy libffi.so.7, and libffi.so.7.1.0 from `pandoc`
+RUN ln -s /usr/lib/libffi.so.8 /usr/lib/libffi.so.7
 
 # Tell Puppeteer to skip installing Chrome. We'll be using the installed package.
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
