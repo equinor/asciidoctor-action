@@ -42,7 +42,7 @@ if [ "${1:-}" = 'RUN' ]; then
 
       if [[ $# -ge 2 ]]; then
         if [[ "$file" == *"${2%.*-}"* ]]; then
-          mv "$destination/${file%.*}.html" "$destination/index.html"
+          mv "$destination/${file%.*}.html" "$destination/$(dirname "$file")/index.html"
         fi
       fi
 
