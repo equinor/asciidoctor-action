@@ -1,7 +1,7 @@
-FROM pandoc/alpine:2.16.2 AS pandoc
-FROM asciidoctor/docker-asciidoctor:1.22.2
+FROM pandoc/core:2.18.0.0-alpine AS pandoc
+FROM asciidoctor/docker-asciidoctor:1.27.0
 
-LABEL "version"="1.1.1"
+LABEL "version"="1.1.2 "
 
 # https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md
 
