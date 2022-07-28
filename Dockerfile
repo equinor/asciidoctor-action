@@ -1,7 +1,16 @@
 FROM pandoc/core:2.18.0.0-alpine AS pandoc
 FROM asciidoctor/docker-asciidoctor:1.27.0
 
-LABEL "version"="1.1.2 "
+LABEL "version"="1.2.0"
+
+# Install deiagrams
+RUN python3 -m ensurepip && \
+    apk add --no-cache \
+      poetry
+
+WORKDIR /opt/dependencies
+COPY pyproject.toml poetry.toml poetry.lock ./
+RUN poetry install
 
 # https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md
 
