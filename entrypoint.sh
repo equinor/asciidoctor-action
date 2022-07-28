@@ -42,6 +42,10 @@ if [ "${1:-}" = 'RUN' ]; then
 
       if [[ $# -ge 2 ]]; then
         if [[ "$file" == *"${2%.*-}"* ]]; then
+          if  [[ -f "$destination/$(dirname "$file")/index.html" ]]; then
+            echo "Cannot overwrite $destination/$(dirname "$file")/index.html (from '$file'); it already exists"
+            continue
+          fi
           ln "$destination/${file%.*}.html" "$destination/$(dirname "$file")/index.html"
         fi
       fi
