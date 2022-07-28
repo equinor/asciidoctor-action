@@ -13,7 +13,14 @@ RUN apk add --no-cache \
       freetype-dev \
       harfbuzz \
       ca-certificates \
+      font-noto-cjk \
+      font-noto-emoji \
+      terminus-font \
+      ttf-dejavu \
       ttf-freefont \
+      ttf-font-awesome \
+      ttf-inconsolata \
+      ttf-linux-libertine \
       nodejs \
       yarn
 
@@ -67,8 +74,7 @@ USER pptruser
 # can be used directly
 WORKDIR /app
 
-COPY --chown=pptruser  package.json .
-COPY --chown=pptruser  yarn.lock .
+COPY --chown=pptruser  package.json yarn.lock ./
 RUN yarn install --frozen-lockfile
 
 COPY --chown=pptruser  ./ .
