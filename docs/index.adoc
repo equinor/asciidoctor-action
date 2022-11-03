@@ -67,6 +67,14 @@ application
 end legend
 ----
 
+== Example architecture diagram
+Using link:https://diagrams.mingrammer.com[diagrams]
+
+[diagrams, format=png]
+----
+include::diagram.py[]
+----
+
 == Latex example
 
 latexmath:[dz = z_{global} - (z_{min} + z_{incr} * k)]

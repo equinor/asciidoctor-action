@@ -5,3 +5,6 @@
 !mermaid.config.json
 !package.json
 !yarn.lock
+!pyproject.toml
+!poetry.lock
+!poetry.toml
