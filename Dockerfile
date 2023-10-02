@@ -1,7 +1,7 @@
-FROM pandoc/core:2.19.2-alpine AS pandoc
-FROM asciidoctor/docker-asciidoctor:1.33.0
+FROM pandoc/core:3.1.1.0-alpine AS pandoc
+FROM asciidoctor/docker-asciidoctor:1.57.0
 
-LABEL "version"="1.2.1"
+LABEL "version"="1.2.2"
 
 # Install deiagrams
 RUN python3 -m ensurepip && \
